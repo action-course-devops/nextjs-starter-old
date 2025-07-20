@@ -1,0 +1,5 @@
+* @subindevops
+*.js @subindevops
+*.ts @subindevops
+*.tsx @subindevops
+/e2e/ @s2bhilai
