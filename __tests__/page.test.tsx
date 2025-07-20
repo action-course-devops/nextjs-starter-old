@@ -4,7 +4,7 @@ import "@testing-library/jest-dom";
 
 // jest.mock("../src/utils/flagsmith",() => {
 //   return {
-//     getEnvironmentFlags: jest.fn(() => 
+//     getEnvironmentFlags: jest.fn(() =>
 //       Promise.resolve({
 //          isFeatureEnabled: () => {
 //           return true;
@@ -14,7 +14,7 @@ import "@testing-library/jest-dom";
 // });
 
 // jest.mock("../src/utils/flagsmith.ts", () => ({
-//   getEnvironmentFlags: jest.fn(() => 
+//   getEnvironmentFlags: jest.fn(() =>
 //     Promise.resolve({
 //       isFeatureEnabled: jest.fn((feature) => {
 //         return feature === 'search';
@@ -23,14 +23,14 @@ import "@testing-library/jest-dom";
 //   )
 // }));
 
-jest.mock('flagsmith-nodejs', () => ({
+jest.mock("flagsmith-nodejs", () => ({
   Flagsmith: jest.fn().mockImplementation(() => ({
-    getEnvironmentFlags: jest.fn(() => 
+    getEnvironmentFlags: jest.fn(() =>
       Promise.resolve({
-        isFeatureEnabled: jest.fn((feature) => feature === 'search')
-      })
-    )
-  }))
+        isFeatureEnabled: jest.fn((feature) => feature === "search"),
+      }),
+    ),
+  })),
 }));
 
 describe("Home", () => {
