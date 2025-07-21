@@ -21,6 +21,10 @@ jobs:
         run: npm run lint
       - name: Check for type Errors
         run: npm run typecheck
+      - name: Debug - Check if FLAGSMITH_KEY is set
+        run: echo "FLAGSMITH_KEY is set to '${{ secrets.FLAGSMITH_KEY }}'"
+        env:
+          FLAGSMITH_KEY: ${{ secrets.FLAGSMITH_KEY }}
       - name: Build Project
         run: npm run build
         env:
