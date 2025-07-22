@@ -1,0 +1,17 @@
+name: Env Test
+on:
+  workflow_dispatch:
+
+jobs:
+  env-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test FLAGSMITH_KEY_1
+        run: |
+          if [ -z "$FLAGSMITH_KEY_1" ]; then
+            echo "❌ Empty"
+          else
+            echo "✅ Working (${#FLAGSMITH_KEY_1} chars)"
+          fi
+        env:
+          FLAGSMITH_KEY_1: ${{ secrets.FLAGSMITH_KEY_1 }}
