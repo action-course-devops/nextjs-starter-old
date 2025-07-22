@@ -12,17 +12,17 @@ jobs:
     runs-on: ubuntu-latest
     environment: "staging"
     steps:
-      - name: Debug - Check FLAGSMITH_KEY availability
+      - name: Debug - Check FLAGSMITH_KEY_1 availability
         run: |
-          if [ -z "$FLAGSMITH_KEY" ]; then
-            echo "❌ FLAGSMITH_KEY is empty or not set"
+          if [ -z "$FLAGSMITH_KEY_1" ]; then
+            echo "❌ FLAGSMITH_KEY_1 is empty or not set"
             echo "Available secrets that contain 'FLAG': none found"
           else
-            echo "✅ FLAGSMITH_KEY is set (length: ${#FLAGSMITH_KEY})"
-            echo "First 10 characters: ${FLAGSMITH_KEY:0:10}..."
+            echo "✅ FLAGSMITH_KEY_1 is set (length: ${#FLAGSMITH_KEY_1})"
+            echo "First 10 characters: ${FLAGSMITH_KEY_1:0:10}..."
           fi
         env:
-          FLAGSMITH_KEY: ${{ secrets.FLAGSMITH_KEY }}
+          FLAGSMITH_KEY_1: ${{ secrets.FLAGSMITH_KEY_1 }}
       - name: List available environment variables (for debugging)
         run: |
           echo "Environment variables containing 'FLAG':"
@@ -30,4 +30,4 @@ jobs:
   run-tests:
     uses: ./.github/workflows/test.yaml
     secrets:
-      FLAGSMITH_KEY: ${{ secrets.FLAGSMITH_KEY }}
+      FLAGSMITH_KEY_1: ${{ secrets.FLAGSMITH_KEY_1 }}
