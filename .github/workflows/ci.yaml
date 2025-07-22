@@ -8,6 +8,24 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  debug-secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Debug - Check FLAGSMITH_KEY availability
+        run: |
+          if [ -z "$FLAGSMITH_KEY" ]; then
+            echo "❌ FLAGSMITH_KEY is empty or not set"
+            echo "Available secrets that contain 'FLAG': none found"
+          else
+            echo "✅ FLAGSMITH_KEY is set (length: ${#FLAGSMITH_KEY})"
+            echo "First 10 characters: ${FLAGSMITH_KEY:0:10}..."
+          fi
+        env:
+          FLAGSMITH_KEY: ${{ secrets.FLAGSMITH_KEY }}
+      - name: List available environment variables (for debugging)
+        run: |
+          echo "Environment variables containing 'FLAG':"
+          env | grep -i flag || echo "None found"
   run-tests:
     uses: ./.github/workflows/test.yaml
     secrets:
