@@ -10,7 +10,7 @@ concurrency:
 jobs:
   debug-secrets:
     runs-on: ubuntu-latest
-    environment: staging
+    environment: "staging"
     steps:
       - name: Debug - Check FLAGSMITH_KEY availability
         run: |
