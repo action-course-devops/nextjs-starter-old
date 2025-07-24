@@ -28,5 +28,4 @@ jobs:
           env | grep -i flag || echo "None found"
   run-tests:
     uses: ./.github/workflows/test.yaml
-    secrets:
-      FLAGSMITH_KEY_1: ${{ secrets.FLAGSMITH_KEY_1 }}
+    secrets: inherit
