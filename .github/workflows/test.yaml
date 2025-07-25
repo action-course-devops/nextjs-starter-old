@@ -19,7 +19,7 @@ jobs:
       - name: Update apt package lists and install common dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libgtk-3-0 libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libgbm-dev
+          sudo apt-get install -y libgtk-3-0 libnotify-dev libnss3 libxss1 libasound2 libgbm-dev libasound2t64
       - name: Install Dependencies
         run: npm ci
       - name: Check for formatting Errors
