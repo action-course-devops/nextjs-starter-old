@@ -5,7 +5,7 @@ export const revalidate = 0;
 
 export default async function Home() {
   const flags = await flagsmith.getEnvironmentFlags();
-  console.log("flags2: ", flags);
+  console.log("flags3: ", flags);
   return (
     <main className="main">
       <div>
