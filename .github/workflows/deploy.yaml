@@ -87,12 +87,12 @@ jobs:
         run: |
           echo "inputs.aws-env: '${{ inputs.aws-env }}'"
           echo "vars.AWS_EB_ENV_INSTANCE_TYPES: '${{ vars.AWS_EB_ENV_INSTANCE_TYPES }}'"
-          echo "inputs.aws_env: '${{ inputs.aws_env }}'"
+          echo "inputs.aws-env: '${{ inputs.aws_env }}'"
       - name: Create a New Environment
         if: steps.get-env-name.outputs.aws_env == 'None' || steps.get-env-status.outputs
               .aws_env_status == 'Terminated'
         run: eb create ${{ inputs.aws-env }} --instance-types ${{ vars.AWS_EB_ENV_INSTANCE_TYPES }}
-          --cname ${{ inputs.aws_env }} --envvars FLAGSMITH_KEY=${{ secrets.FLAGSMITH_KEY }}
+          --cname ${{ inputs.aws-env }} --envvars FLAGSMITH_KEY=${{ secrets.FLAGSMITH_KEY }}
       - name: Deploy if Environment Exists
         if: steps.get-env-name.outputs.aws_env == inputs.aws-env && steps.get-env-status.outputs.aws_env_status != 'Terminated'        
         run: eb deploy ${{ inputs.aws-env }}
