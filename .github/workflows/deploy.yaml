@@ -81,7 +81,7 @@ jobs:
           --application-name ${{ vars.AWS_EB_APP_NAME }} --environment-names 
           ${{ inputs.aws-env }} --query "Environments[0].Status" --output text)" >> $GITHUB_OUTPUT
       - name: Initialize EB
-        run: eb init ${{ vars.AWS_EB_APP_NAME }} --platform ${{ vars.AWS_EB_PLATFORM }}
+        run: eb init ${{ vars.AWS_EB_APP_NAME }} --platform "${{ vars.AWS_EB_PLATFORM }}"
           --region ${{ vars.AWS_REGION }}
       - name: Create a New Environment
         if: steps.get-env-name.outputs.aws_env == 'None' || steps.get-env-status.outputs
